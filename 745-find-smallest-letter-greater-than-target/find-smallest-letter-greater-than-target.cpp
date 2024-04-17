@@ -5,7 +5,6 @@ public:
         int right = letters.size()-1;
         if(letters[right]<= target)
            return letters[0];
-        int ans = 0;
         int mid = 0;
         while(left<=right)
            {
@@ -13,7 +12,7 @@ public:
              if(letters[mid] <= target)
                 left = mid + 1;
             else {
-                   ans = mid;
+                   
                    right = mid - 1;
                 }           
                 
