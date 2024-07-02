@@ -14,7 +14,7 @@ public:
                 if(num0<count0)
                    num0 = count0;
                }
-            else if(s[i]=='1')
+            else 
               {
                 count0 = 0;
                 count1++;
