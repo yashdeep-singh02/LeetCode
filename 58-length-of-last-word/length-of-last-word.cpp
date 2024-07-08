@@ -1,29 +1,21 @@
 class Solution {
 public:
+    /*
+    Approach: 
+    Traverse from end to the first whitespace character and count the number of letters.
+    Return the count as our pointer hits the whitespace character.
+    
+    Time complexity: O(n)
+    Space complexity: O(1)
+    */    
     int lengthOfLastWord(string s) {
-        int alpha = 0; 
+        int n = s.length();
         
-        int ans = 0; // Length of the last word found
+        int ptr = n-1;
+        while(ptr >= 0 && s[ptr] == ' ') ptr--; /* Skip the trailing whitespaces */
         
-        int i = s.size()-1;
-        // Loop through the string character by character
-        while(i>=0){
-           if(alpha == 0 && s[i]==' ')
-              {
-                i--;
-                continue;
-              }
-            else if( iswalnum(s[i]))
-               {
-                ans++;
-                alpha =1;
-                i--;
-                continue;
-               }
-            else if(alpha==1 && s[i]==' ')
-                 break;
-        }
-              
-        return ans;
+        int len = 0;
+        while(ptr >= 0 && s[ptr--] != ' ') len++; /* Counting the letters in the last word */
+        return len;
     }
 };
