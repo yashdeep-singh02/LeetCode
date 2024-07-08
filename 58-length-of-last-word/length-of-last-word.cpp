@@ -1,27 +1,29 @@
 class Solution {
 public:
     int lengthOfLastWord(string s) {
-        int count = 0; // Counter for the length of the current word
-        int lastWordLength = 0; // Length of the last word found
-
-        // Loop through the string character by character
-        for (int i = 0; i < s.size(); ++i) {
-            if (s[i] != ' ') { 
-                // If the current character is not a space, increment the count
-                count++;
-            } else if (count > 0) { 
-                // If we encounter a space and count is not zero,
-                // it means we have finished a word
-                lastWordLength = count; // Update the length of the last word
-                count = 0; // Reset the count for the next word
-            }
-        }
+        int alpha = 0; 
         
-        // If the last word is not followed by a space, count will be the length of the last word
-        if (count > 0) {
-            lastWordLength = count;
+        int ans = 0; // Length of the last word found
+        
+        int i = s.size()-1;
+        // Loop through the string character by character
+        while(i>=0){
+           if(alpha == 0 && s[i]==' ')
+              {
+                i--;
+                continue;
+              }
+            else if( iswalnum(s[i]))
+               {
+                ans++;
+                alpha =1;
+                i--;
+                continue;
+               }
+            else if(alpha==1 && s[i]==' ')
+                 break;
         }
-
-        return lastWordLength;
+              
+        return ans;
     }
 };
