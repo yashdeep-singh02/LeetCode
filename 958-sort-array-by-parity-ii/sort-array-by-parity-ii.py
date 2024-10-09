@@ -4,25 +4,19 @@ class Solution:
         ans=[]
         even=[]
         odd=[]
-        for i in range(len(nums)):
-            if nums[i]%2==0:
-                even.append(nums[i])
-            elif nums[i]%2!=0:
-                odd.append(nums[i])
-        k=0
-        j=0
-        m=0
-        n=0
-        while j<len(nums):
-            if k%2==0:
-                ans.append(even[m])
-                k+=1
-                m+=1
+        for num in nums:
+            if num%2==0:
+                even.append(num)
             else:
-                ans.append(odd[n])
-                k+=1
-                n+=1
-            j+=1
+                odd.append(num)
+      
+        for i in range(len(nums)):
+            if i%2==0:
+                ans.append(even.pop())
+               
+            else:
+                ans.append(odd.pop())
+                
         
         return ans
 
