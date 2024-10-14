@@ -1,12 +1,16 @@
 class Solution:
     def arrangeCoins(self, n: int) -> int:
-        ans=0
-        i=1
+        l,r=1,n
+        res=0
+        while l<=r:
+            mid=(l+r)//2
+            coins=(mid+1)*(mid/2)
+            if coins>n:
+                r=mid-1
+            else:
+                l=mid+1
+                #res=max(res,mid)
+                res=mid
 
-        while(n>=i):
-            n=n-i
-            if n>=0:
-               ans+=1
-            i+=1
-        return ans
+        return res
         
