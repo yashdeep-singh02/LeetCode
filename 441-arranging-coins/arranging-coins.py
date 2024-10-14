@@ -9,8 +9,8 @@ class Solution:
                 r=mid-1
             else:
                 l=mid+1
-                #res=max(res,mid)
-                res=mid
+                res=max(res,mid)
+                #res=mid
 
         return res
         
