@@ -1,27 +1,43 @@
 class MyQueue:
 
     def __init__(self):
-        self.s1=[]
-        self.s2=[]
-
-    def push(self, x: int) -> None:
-        self.s1.append(x)
-
-    def pop(self) -> int:
-        if not self.s2:
-            while self.s1:
-                self.s2.append(self.s1.pop())        
-        return self.s2.pop()
+        self.s=[]
         
 
+    def push(self, x: int) -> None:
+        self.s.append(x)
+
+    def pop(self) -> int:
+        temp = []
+        ans = None
+        # Move elements from s to temp, except for the front element
+        while len(self.s) > 1:
+            temp.append(self.s.pop())
+        # The last element in s is the front of the queue
+        if self.s:
+            ans = self.s.pop()  # Get the front element (FIFO behavior)
+        # Move the elements back to s
+        while temp:
+            self.s.append(temp.pop())
+        return ans
+
     def peek(self) -> int:
-         if not self.s2:
-            while self.s1:
-                self.s2.append(self.s1.pop())   
-         return self.s2[-1]
+        temp = []
+        ans = None
+        # Move elements from s to temp, except for the front element
+        while len(self.s) > 1:
+            temp.append(self.s.pop())
+        # The last element in s is the front of the queue
+        if self.s:
+            ans = self.s[-1]  # Get the front element (FIFO behavior)
+        # Move the elements back to s
+        while temp:
+            self.s.append(temp.pop())
+
+        return ans
 
     def empty(self) -> bool:
-        return max( len(self.s1),len(self.s2))==0
+        return len(self.s)==0
         
 
 
